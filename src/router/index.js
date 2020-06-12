@@ -32,7 +32,7 @@ const routes = [
   },
   {
     path: "/user",
-    name: "用户1aaa",
+    name: "用户",
     component: Main,
     redirect: "/user/index",
     children: [
