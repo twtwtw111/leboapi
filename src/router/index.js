@@ -10,7 +10,8 @@ import ParentView from "../views/user/ParentView.vue";
 import AccountRecharge from "../views/user/account/recharge.vue";
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+  {
     path: "/",
     name: "Home",
     component: Home
@@ -22,7 +23,7 @@ const routes = [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
   {
     path: "/login",
@@ -31,10 +32,11 @@ const routes = [{
   },
   {
     path: "/user",
-    name: "用户",
+    name: "用户1",
     component: Main,
-    redirect: '/user/index',
-    children: [{
+    redirect: "/user/index",
+    children: [
+      {
         path: "/user/index",
         name: "个人信息",
         component: UserIndex
@@ -42,17 +44,19 @@ const routes = [{
       {
         path: "/user/logout",
         name: "logout",
-        redirect: '/user/index',
+        redirect: "/user/index"
       },
       {
         path: "/user/account",
         name: "我的账户",
         component: ParentView,
-        children: [{
-          path: "/user/account/recharge",
-          name: "账户充值",
-          component: AccountRecharge,
-        }]
+        children: [
+          {
+            path: "/user/account/recharge",
+            name: "账户充值",
+            component: AccountRecharge
+          }
+        ]
       }
     ]
   }
